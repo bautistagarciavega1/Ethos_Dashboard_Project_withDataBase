@@ -1,0 +1,46 @@
+'use client';
+
+import { Doughnut } from 'react-chartjs-2';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+
+ChartJS.register(ArcElement, Tooltip, Legend);
+
+export default function ProjectProgress() {
+  const data = {
+    labels: ['On Track', 'Delayed', 'Concern'],
+    datasets: [
+      {
+        data: [25, 15, 10],
+        backgroundColor: ['#1e3a8a', '#ef4444', '#facc15'],
+      },
+    ],
+  };
+
+  const options = {
+    plugins: {
+      legend: {
+        position: 'bottom' as const,
+      },
+    },
+    cutout: '60%',
+  };
+
+  return (
+    <div>
+      <h2>Project Progress &amp; Task Status</h2>
+      <div style={{ maxWidth: 230, margin: '0 auto' }}>
+        <Doughnut data={data} options={options} />
+      </div>
+      <p
+        style={{
+          textAlign: 'center',
+          fontSize: '2.5rem',
+          fontWeight: 700,
+          marginTop: '1rem',
+        }}
+      >
+        50%
+      </p>
+    </div>
+  );
+}
