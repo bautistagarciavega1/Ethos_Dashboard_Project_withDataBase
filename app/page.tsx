@@ -102,3 +102,36 @@ export default function Home() {
     </div>
   );
 }
+
+<div className="program-grid">
+
+  {programs.map((p) => (
+    <div
+      key={p.id}
+      className="program-card"
+    >
+      {/* BOTÓN AYUDAR */}
+      <button className="program-button-red">
+        Ayudar ▼
+      </button>
+
+      {/* IMAGEN */}
+      <div className="program-img-placeholder"></div>
+
+      {/* TÍTULO */}
+      <h3 className="program-title">{p.title}</h3>
+
+      {/* DESCRIPCIÓN */}
+      <p className="program-desc">{p.desc}</p>
+
+      {/* BOTÓN INFORMACIÓN */}
+      <button
+        className="program-button-info"
+        onClick={() => setSelected(p.id)}
+      >
+        Información
+      </button>
+    </div>
+  ))}
+
+</div>
