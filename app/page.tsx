@@ -31,6 +31,8 @@ export default function Home() {
 
   return (
     <div className="min-h-screen p-10 bg-gray-50">
+      
+      {/* Título principal */}
       <h1 className="text-center text-4xl font-bold mb-2 text-blue-900">
         Universidad de Buenos Aires
       </h1>
@@ -38,22 +40,44 @@ export default function Home() {
         Programas y líneas de donación disponibles dentro de la UBA.
       </p>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-10">
 
-        {/* PANEL IZQUIERDO */}
+        {/* PANEL IZQUIERDO – Tarjetas */}
         <div>
-          <div className="grid grid-cols-1 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+
             {programs.map((p) => (
               <div
                 key={p.id}
-                className={`p-6 bg-white shadow rounded-xl cursor-pointer transition-all 
-                ${selected === p.id ? "scale-105 border border-blue-500" : "hover:scale-[1.02]"}`}
-                onClick={() => setSelected(p.id)}
+                className={`bg-white shadow-md rounded-2xl p-6 text-center transition-all
+                ${selected === p.id ? "scale-105 border border-blue-500" : "hover:scale-[1.02]"}
+              `}
               >
-                <h3 className="text-xl font-semibold mb-2">{p.title}</h3>
-                <p className="text-gray-600">{p.desc}</p>
+                {/* Botón rojo Ayudar */}
+                <button className="bg-red-500 text-white font-semibold px-5 py-1 rounded-lg mb-3">
+                  Ayudar ▼
+                </button>
 
-                <button className="mt-4 px-4 py-2 bg-blue-600 text-white rounded">
+                {/* Imagen (puedes reemplazar el src) */}
+                <div className="mb-4 flex justify-center">
+                  <div className="w-20 h-20 bg-gray-200 rounded-lg"></div>
+                </div>
+
+                {/* Título */}
+                <h3 className="text-lg font-semibold mb-2">
+                  {p.title}
+                </h3>
+
+                {/* Descripción */}
+                <p className="text-gray-600 text-sm mb-4">
+                  {p.desc}
+                </p>
+
+                {/* Botón Información */}
+                <button
+                  onClick={() => setSelected(p.id)}
+                  className="bg-blue-600 text-white font-medium px-4 py-2 rounded-lg shadow hover:bg-blue-700 transition"
+                >
                   Información
                 </button>
               </div>
@@ -61,18 +85,19 @@ export default function Home() {
           </div>
         </div>
 
-        {/* PANEL DERECHO — DASHBOARD */}
+        {/* PANEL DERECHO – Dashboard al seleccionar */}
         <div>
           {selected ? (
-            <div className="p-4 bg-white shadow-xl rounded-xl">
+            <div className="p-4 bg-white shadow-xl rounded-2xl">
               <Dashboard />
             </div>
           ) : (
-            <p className="text-gray-400 text-lg text-center mt-20">
+            <p className="text-gray-400 text-lg text-center mt-32">
               Selecciona un programa para ver su tablero →
             </p>
           )}
         </div>
+
       </div>
     </div>
   );
