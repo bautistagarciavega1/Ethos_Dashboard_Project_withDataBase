@@ -15,7 +15,11 @@ export default function Timeline() {
         <div
           className="timeline-step"
           key={step.text}
-          style={{ display: "flex", alignItems: "center", marginBottom: "0.75rem" }}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            marginBottom: "0.75rem"
+          }}
         >
           <div
             className="timeline-label"
@@ -42,8 +46,15 @@ export default function Timeline() {
         </div>
       ))}
 
-      <div style={{ marginTop: "1.5rem", fontSize: "0.8rem" }}>
-        <strong>Jan - Dec</strong> (example months)
+      <div
+        style={{
+          marginTop: "1.5rem",
+          fontSize: "0.85rem",
+          color: "#4b5563",
+          textAlign: "left"
+        }}
+      >
+        <strong>2026:</strong> Jan • Feb • Mar • Apr • May • Jun • Jul • Aug • Sep • Oct • Nov • Dec
       </div>
     </div>
   );
