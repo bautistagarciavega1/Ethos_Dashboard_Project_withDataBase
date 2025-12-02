@@ -1,33 +1,40 @@
-import ProjectProgress from "./components/ProjectProgress";
-import BudgetChart from "./components/BudgetChart";
-import RiskIssuesChart from "./components/RiskIssuesChart";
-import Timeline from "./components/Timeline";
-import Notes from "./components/Notes";
+"use client";
 
-export default function Home() {
+import ProjectProgress from "./ProjectProgress";
+import BudgetChart from "./BudgetChart";
+import RiskIssuesChart from "./RiskIssuesChart";
+import Timeline from "./Timeline";
+import Notes from "./Notes";
+
+export default function Dashboard() {
   return (
-    <main className="main">
-      <h1>Equipamiento Tecnológico Dashboard</h1>
+    <main className="main p-6">
+      <h1 className="text-3xl font-bold mb-6">
+        Equipamiento Tecnológico Dashboard
+      </h1>
 
-      {/* Top section: Progress + Budget + Risks */}
-      <section className="grid-3">
-        <div className="card">
+      {/* Top: Progress + Budget + Risks */}
+      <section className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+        <div className="card p-4 bg-white shadow rounded-xl">
           <ProjectProgress />
         </div>
-        <div className="card">
+
+        <div className="card p-4 bg-white shadow rounded-xl">
           <BudgetChart />
         </div>
-        <div className="card">
+
+        <div className="card p-4 bg-white shadow rounded-xl">
           <RiskIssuesChart />
         </div>
       </section>
 
-      {/* Bottom section: Timeline + Notes */}
-      <section className="grid-2">
-        <div className="card">
+      {/* Bottom: Timeline + Notes */}
+      <section className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="card p-4 bg-white shadow rounded-xl col-span-2">
           <Timeline />
         </div>
-        <div className="card">
+
+        <div className="card p-4 bg-white shadow rounded-xl">
           <Notes />
         </div>
       </section>
