@@ -29,6 +29,8 @@ export default function HomePage() {
     },
   ];
 
+  const selectedProgram = programs.find((p) => p.id === selected);
+
   return (
     <div className="min-h-screen p-10 bg-gray-50">
 
@@ -40,54 +42,60 @@ export default function HomePage() {
         Programas y líneas de donación disponibles dentro de la UBA.
       </p>
 
-      {/* CONTENEDOR DE 2 COLUMNAS */}
-      <div className="grid grid-cols-1 xl:grid-cols-2 gap-10">
+      {/* ♦ CONTENEDOR PRINCIPAL — Todas las columnas */}
+      <div className="w-full">
 
-        {/* IZQUIERDA — TARJETAS */}
-        <div className="flex justify-center">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+        {/* 🔷 SI HAY SELECCIÓN → Mostrar barra superior + dashboard */}
+        {selected && (
+          <div className="w-full flex flex-col gap-6 animate-fade-in">
 
-            {programs.map((p) => (
-              <div
-                key={p.id}
-                className={`
-                  program-card transition-all duration-500
-                  ${selected && selected !== p.id ? "opacity-0 scale-90 pointer-events-none" : ""}
-                  ${selected === p.id ? "translate-x-[-120px]" : ""}
-                `}
-              >
-                <button className="program-button-red">Ayudar ▼</button>
+            {/* 🔵 BARRA SUPERIOR */}
+            <div className="program-selected-banner">
+              <h2 className="text-2xl font-semibold text-gray-800">
+                {selectedProgram?.title}
+              </h2>
+              <p className="text-gray-600 mt-1">
+                {selectedProgram?.desc}
+              </p>
+            </div>
 
-                <div className="program-img-placeholder"></div>
-
-                <h3 className="program-title">{p.title}</h3>
-
-                <p className="program-desc">{p.desc}</p>
-
-                <button
-                  onClick={() => setSelected(p.id)}
-                  className="program-button-info"
-                >
-                  Información
-                </button>
-              </div>
-            ))}
-
-          </div>
-        </div>
-
-        {/* DERECHA — DASHBOARD */}
-        <div className="relative flex items-start justify-center mt-10">
-          {selected ? (
-            <div className="p-4 bg-white shadow-xl rounded-2xl animate-fade-in">
+            {/* 📊 DASHBOARD FULL WIDTH */}
+            <div className="w-full bg-white shadow-xl rounded-2xl p-6">
               <Dashboard />
             </div>
-          ) : (
-            <p className="text-gray-400 text-lg text-center mt-32">
-              Selecciona un programa para ver su tablero →
-            </p>
-          )}
-        </div>
+          </div>
+        )}
+
+        {/* 🔶 SI NO HAY SELECCIÓN → Mostrar los 4 bullets centrados */}
+        {!selected && (
+          <div className="flex justify-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+
+              {programs.map((p) => (
+                <div
+                  key={p.id}
+                  className="program-card transition-all duration-500"
+                >
+                  <button className="program-button-red">Ayudar ▼</button>
+
+                  <div className="program-img-placeholder"></div>
+
+                  <h3 className="program-title">{p.title}</h3>
+
+                  <p className="program-desc">{p.desc}</p>
+
+                  <button
+                    onClick={() => setSelected(p.id)}
+                    className="program-button-info"
+                  >
+                    Información
+                  </button>
+                </div>
+              ))}
+
+            </div>
+          </div>
+        )}
 
       </div>
     </div>
