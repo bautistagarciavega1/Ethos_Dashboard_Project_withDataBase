@@ -178,14 +178,12 @@ li::marker {
 
 .program-button-back,
 .program-button-help {
-  font-size: 1rem;
-  font-weight: 600;
-  padding: 12px 28px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: 0.2s ease;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-  border: none;
+  background: #ef4444 !important; /* FORZAMOS rojo en todas las pantallas */
+  color: white !important;
+}
+
+.program-button-help:hover {
+  background: #d73131 !important;
 }
 
 /* VOLVER — Azul */
