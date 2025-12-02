@@ -49,16 +49,19 @@ export default function HomePage() {
         {selected && (
           <div className="w-full flex flex-col gap-6 animate-fade-in">
 
-            {/* 🔷 BARRA SUPERIOR (BANNER) */}
-            <div className="program-selected-banner flex justify-between items-center">
+            {/* 🔷 BANNER SUPERIOR */}
+            <div className="program-selected-banner flex items-center justify-between">
 
-              {/* IZQUIERDA — Botón Ayudar */}
-              <button className="program-button-red text-sm px-4 py-2">
-                Ayudar ▼
+              {/* 1️⃣ IZQUIERDA — BOTÓN VOLVER */}
+              <button
+                onClick={() => setSelected(null)}
+                className="program-button-back"
+              >
+                ← Volver
               </button>
 
-              {/* CENTRO — Título y descripción */}
-              <div className="text-center flex-1">
+              {/* 2️⃣ CENTRO — TÍTULO Y TEXTO */}
+              <div className="text-center flex-1 px-6">
                 <h2 className="text-2xl font-semibold text-gray-800">
                   {selectedProgram?.title}
                 </h2>
@@ -67,12 +70,9 @@ export default function HomePage() {
                 </p>
               </div>
 
-              {/* DERECHA — Botón VOLVER */}
-              <button
-                onClick={() => setSelected(null)}
-                className="program-button-info text-sm px-4 py-2"
-              >
-                ← Volver
+              {/* 3️⃣ DERECHA — BOTÓN AYUDAR */}
+              <button className="program-button-help">
+                Ayudar ▼
               </button>
             </div>
 
