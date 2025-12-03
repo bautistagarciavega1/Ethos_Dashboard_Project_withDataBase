@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 /* Global reset */
 * {
   box-sizing: border-box;
@@ -47,12 +48,6 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-.card h2 {
-  margin-top: 0;
-  margin-bottom: 1rem;
-  font-size: 1.1rem;
-}
-
 /* Timeline */
 .timeline-step {
   display: flex;
@@ -75,7 +70,7 @@ body {
   border-radius: 0 999px 999px 0;
 }
 
-/* Notes list */
+/* Notes */
 .notes-list {
   padding-left: 1.1rem;
 }
@@ -84,32 +79,30 @@ body {
   margin-bottom: 0.4rem;
 }
 
-/* Bullet list — cuadrados más corporativos */
+/* Bullet corporativo */
 ul {
   list-style-type: square;
   padding-left: 1.2rem;
 }
-
 li::marker {
   color: #111;
   font-size: 14px;
   font-weight: bold;
 }
 
-/* ---- TARJETAS CORPORATIVAS DEL HOME ---- */
-
+/* ---- TARJETAS DEL HOME ---- */
 .program-card {
   background: #ffffff;
   border-radius: 16px;
   padding: 24px;
   text-align: center;
-  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.08);
+  box-shadow: 0px 4px 14px rgba(0,0,0,0.08);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .program-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0px 8px 18px rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 8px 18px rgba(0,0,0,0.12);
 }
 
 .program-button-red {
@@ -118,7 +111,6 @@ li::marker {
   font-weight: 600;
   padding: 6px 14px;
   border-radius: 8px;
-  border: none;
   cursor: pointer;
   margin-bottom: 14px;
 }
@@ -128,7 +120,6 @@ li::marker {
   color: white;
   padding: 8px 18px;
   border-radius: 8px;
-  border: none;
   cursor: pointer;
   font-weight: 500;
   margin-top: 12px;
@@ -154,14 +145,14 @@ li::marker {
   margin-bottom: 18px;
 }
 
-/* Grid bonito */
+/* Grid responsive */
 .program-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 32px;
 }
 
-/* ---- BANNER SUPERIOR (SELECCIÓN) ---- */
+/* ---- BANNER SUPERIOR ---- */
 .program-selected-banner {
   width: 100%;
   background: white;
@@ -174,47 +165,41 @@ li::marker {
   box-shadow: 0 4px 18px rgba(0,0,0,0.10);
 }
 
-/* ---- BOTONES DEL BANNER ---- */
-
+/* ---- BOTÓN VOLVER (Azul) ---- */
 .program-button-back {
-  background: transparent !important; /* SIN COLOR */
-  color: #2563eb !important; /* Azul suave */
-  border: 2px solid #2563eb;
-  padding: 10px 26px;
+  background: transparent !important;   /* SIN fondo */
+  color: #2563eb !important;           /* Azul */
+  border: 2px solid #2563eb !important;
+  padding: 6px 18px !important;
   border-radius: 10px;
   font-weight: 600;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ---- BOTÓN AYUDAR (Rojo) ---- */
+.program-button-help {
+  background: #ef4444 !important;
+  color: white !important;
+  border: 2px solid #ef4444 !important;
+  padding: 6px 18px !important;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .program-button-help:hover {
   background: #d73131 !important;
+  border-color: #d73131 !important;
 }
 
-/* VOLVER — Azul */
-.program-button-back {
-  background: #2563eb;
-  color: white;
-}
-.program-button-back:hover {
-  background: #1e4fcf;
-}
-
-/* AYUDAR — Rojo */
-.program-button-help {
-  background: #ef4444; /* rojo principal */
-  color: white;
-}
-.program-button-help:hover {
-  background: #d73131; /* rojo más fuerte en hover */
-}
-
-/* ANIMACIÓN */
+/* Animación */
 @keyframes fade-down {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
