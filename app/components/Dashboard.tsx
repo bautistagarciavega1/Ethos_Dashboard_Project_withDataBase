@@ -6,38 +6,34 @@ import RiskIssuesChart from "./RiskIssuesChart";
 import Timeline from "./Timeline";
 import Notes from "./Notes";
 
-export default function Dashboard() {
+export default function Dashboard({ data }) {
   return (
-    <main className="main p-6">
-      <h1 className="text-3xl font-bold mb-6">
-        Equipamiento Tecnológico Dashboard
-      </h1>
-
-      {/* Top: Progress + Budget + Risks */}
-      <section className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-        <div className="card p-4 bg-white shadow rounded-xl">
-          <ProjectProgress />
+    <div className="space-y-10">
+      {/* TOP: progreso + presupuesto + riesgos */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="card">
+          <ProjectProgress value={data.progress} />
         </div>
 
-        <div className="card p-4 bg-white shadow rounded-xl">
-          <BudgetChart />
+        <div className="card">
+          <BudgetChart budget={data.budget} />
         </div>
 
-        <div className="card p-4 bg-white shadow rounded-xl">
-          <RiskIssuesChart />
+        <div className="card">
+          <RiskIssuesChart risks={data.risks} />
         </div>
-      </section>
+      </div>
 
-      {/* Bottom: Timeline + Notes */}
-      <section className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="card p-4 bg-white shadow rounded-xl col-span-2">
-          <Timeline />
+      {/* BOTTOM: timeline + notas */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="card">
+          <Timeline points={data.timeline} />
         </div>
 
-        <div className="card p-4 bg-white shadow rounded-xl">
-          <Notes />
+        <div className="card">
+          <Notes items={data.notes} />
         </div>
-      </section>
-    </main>
+      </div>
+    </div>
   );
 }
