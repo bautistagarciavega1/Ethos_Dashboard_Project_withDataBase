@@ -3,51 +3,50 @@
 import { Bar } from "react-chartjs-2";
 import {
   Chart as ChartJS,
-  BarElement,
   CategoryScale,
   LinearScale,
+  BarElement,
   Tooltip,
   Legend,
 } from "chart.js";
 
-ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
+ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 
-export default function RiskIssuesChart() {
-  const data = {
+export default function RiskIssuesChart({ risks }: any) {
+
+  // Datos dinámicos o fallback si no se pasa nada
+  const riskData = risks ?? {
     labels: ["Open Risks", "Open Issues"],
+    high: [6, 8],
+    medium: [5, 7],
+    low: [3, 4],
+  };
+
+  const data = {
+    labels: riskData.labels,
     datasets: [
       {
         label: "High",
+        data: riskData.high,
         backgroundColor: "#ef4444",
-        data: [6.5, 8.5],
       },
       {
         label: "Medium",
+        data: riskData.medium,
         backgroundColor: "#f59e0b",
-        data: [7.5, 9],
       },
       {
         label: "Low",
+        data: riskData.low,
         backgroundColor: "#3b82f6",
-        data: [1.5, 3.5],
       },
     ],
   };
 
-  const options = {
-    plugins: {
-      legend: {
-        position: "bottom" as const,
-      },
-    },
-    responsive: true,
-    maintainAspectRatio: false,
-  };
-
   return (
-    <div style={{ height: 270 }}>
-      <h2>Risks &amp; Issues</h2>
-      <Bar data={data} options={options} />
+    <div>
+      <h2>Risks & Issues</h2>
+      <Bar data={data} />
     </div>
   );
 }
