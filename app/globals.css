@@ -176,10 +176,13 @@ li::marker {
 
 /* ---- BOTONES DEL BANNER ---- */
 
-.program-button-back,
-.program-button-help {
-  background: #ef4444 !important; /* FORZAMOS rojo en todas las pantallas */
-  color: white !important;
+.program-button-back {
+  background: transparent !important; /* SIN COLOR */
+  color: #2563eb !important; /* Azul suave */
+  border: 2px solid #2563eb;
+  padding: 10px 26px;
+  border-radius: 10px;
+  font-weight: 600;
 }
 
 .program-button-help:hover {
